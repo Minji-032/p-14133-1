@@ -12,4 +12,7 @@ class PostService(
             .orElse(null)
 
     fun findAll(): List<Post> = postRepository.findAll()
+
+    fun findByUsername(username: String): Post? =
+        postRepository.findByUsername(username)
 }
