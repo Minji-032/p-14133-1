@@ -6,6 +6,17 @@ import org.springframework.stereotype.Service
 class PostService(
     private val postRepository: PostRepository,
 ) {
+    fun count() = postRepository.count()
+
+    fun write(username: String): Post {
+        val post = Post(
+            0,
+            username,
+        )
+
+        return postRepository.save(post)
+    }
+
     fun findById(id: Int): Post? =
         postRepository.findById(id)
             .also { print(it) }
@@ -15,4 +26,7 @@ class PostService(
 
     fun findByUsername(username: String): Post? =
         postRepository.findByUsername(username)
+
+    fun findWithShareLockById(id: Int) : Post? =
+        postRepository.findWithShareLockById(id)
 }
