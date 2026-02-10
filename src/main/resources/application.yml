@@ -7,7 +7,7 @@ spring:
     username: root
     password: lldj123414
     hikari:
-      auto-commit: false
+      auto-commit: false  # 이거하면 쿼리 량이 3/1가량 줄어듦
   jpa:
     hibernate:
       ddl-auto: update
