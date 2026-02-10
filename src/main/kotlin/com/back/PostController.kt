@@ -41,4 +41,10 @@ class PostController(
     fun getItem(@PathVariable username: String): Post {
         return postService.findByUsername(username)!!
     }
+
+    @Transactional
+    @GetMapping("/{id}/modifyOptimistic")
+    fun modifyOptimistic(@PathVariable id: Int): Post {
+        return postService.modifyOptimistic(id)
+    }
 }

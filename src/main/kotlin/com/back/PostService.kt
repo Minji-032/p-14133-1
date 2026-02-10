@@ -32,4 +32,12 @@ class PostService(
 
     fun findWithWriteLockById(id: Int): Post? =
         postRepository.findWithWriteLockById(id)
+
+    fun modifyOptimistic(id: Int): Post {
+        val post = findById(id)
+
+        return post?.apply {
+            username = "${username}!"
+        } ?: throw NoSuchElementException("Post not found with id: $id")
+    }
 }
